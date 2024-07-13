@@ -9,4 +9,5 @@ class User < ApplicationRecord # rubocop:disable Style/Documentation
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
   has_secure_password
+  validates :password, presence: true, length: { minimum: 8 }
 end
