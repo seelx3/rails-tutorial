@@ -10,4 +10,13 @@ class User < ApplicationRecord # rubocop:disable Style/Documentation
                     uniqueness: true
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 }
+
+  def self.digest(string)
+    cost = if ActiveModel::SecurePassword.min_cost
+             BCrypt::Engine::MIN_COST
+           else
+             BCrypt::Engine.cost
+           end
+    BCrypt::Password.create(string, cost:)
+  end
 end
