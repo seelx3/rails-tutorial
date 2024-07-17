@@ -2,6 +2,7 @@
 
 class UsersController < ApplicationController # rubocop:disable Style/Documentation
   before_action :logged_in_user, only: %i[edit update]
+  before_action :correct_user,   only: %i[edit update]
 
   def show
     @user = User.find(params[:id])
@@ -49,5 +50,10 @@ class UsersController < ApplicationController # rubocop:disable Style/Documentat
 
     flash[:danger] = 'Please log in.'
     redirect_to login_url, status: :see_other
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url, status: :see_other) unless current_user?(@user)
   end
 end
