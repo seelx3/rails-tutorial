@@ -21,6 +21,10 @@ class UsersController < ApplicationController # rubocop:disable Style/Documentat
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   private
 
   def user_params
