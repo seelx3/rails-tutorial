@@ -3,10 +3,11 @@
 class SessionsController < ApplicationController # rubocop:disable Style/Documentation
   def new; end
 
-  def create
+  def create # rubocop:disable Metrics/AbcSize
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
       reset_session
+      remember user
       log_in user
       redirect_to user
     else
