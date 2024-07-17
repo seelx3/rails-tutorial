@@ -1,14 +1,17 @@
 # rails-tutorial
 
-tutorial app
+My rails tutorial app implementation.
 
 ## Prerequisite
 
 - asdf
 
-## version
+## Setup
 
-- ruby: 3.2.4
+```
+asdf install
+bundle install
+```
 
 ## Note
 
@@ -18,7 +21,7 @@ tutorial app
 rails s
 ```
 
-- How to format
+- How to run rubocop
 
 ```
 bundle exec rubocop
